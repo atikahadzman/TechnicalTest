@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 public class PlatformDummyDto
 {
     [Key]
-    [DatabaseGenerated(DatabaseGeneratedOption.None)]
+    // [DatabaseGenerated(DatabaseGeneratedOption.None)]
     public int id { get; set; }
     public string uniqueName { get; set; } = "";
     public double latitude { get; set; }
