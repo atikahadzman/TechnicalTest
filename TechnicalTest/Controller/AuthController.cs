@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.Json;
@@ -13,22 +14,24 @@ namespace TechnicalTest.Controllers;
 public class AuthController : ControllerBase
 {
     private readonly IHttpClientFactory _httpClientFactory;
+    private readonly ApiSettings _apiSettings;
 
-    public AuthController(IHttpClientFactory httpClientFactory)
+    public AuthController(IHttpClientFactory httpClientFactory, IOptions<ApiSettings> options)
     {
         _httpClientFactory = httpClientFactory;
+        _apiSettings = options.Value;
     }
 
     [HttpPost("login")]
     public async Task<IActionResult> Login([FromBody] LoginRequest request)
     {
         var client = _httpClientFactory.CreateClient();
-
+        var url = $"{_apiSettings.BaseUrl}/Account/Login";
         var json = JsonSerializer.Serialize(request);
         var content = new StringContent(json, Encoding.UTF8, "application/json");
 
         var response = await client.PostAsync(
-            "http://test-demo.aemenersol.com/api/Account/Login",
+            url,
             content);
 
         var raw = await response.Content.ReadAsStringAsync();
