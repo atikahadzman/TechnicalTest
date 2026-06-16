@@ -2,6 +2,7 @@ namespace TechnicalTest.Models;
 
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 public class WellDummyDto
 {
@@ -14,5 +15,6 @@ public class WellDummyDto
     public double longitude { get; set; }
     public DateTime lastUpdate { get; set; }
 
+    [JsonIgnore]
     public PlatformDummyDto? Platform { get; set; }
 } 
