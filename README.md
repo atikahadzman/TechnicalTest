@@ -24,27 +24,28 @@ Update `appsettings.json`
 
 
 ###  Create database
-
-<pre>dotnet ef database update</pre>
+```bash
+dotnet ef database update
 
 
 
 ###  Create migration
 
-<pre>dotnet ef migrations add InitialCreate</pre>
+```bash
+dotnet ef migrations add InitialCreate
 
 
 
 ###  Apply migration
-
-<pre>dotnet ef database update</pre>
+```bash
+dotnet ef database update
 
 
 
 ###  Run application
-
-<pre>dotnet clean</pre>
-<pre>dotnet run</pre>
+```bash
+dotnet clean
+dotnet run
 
 
 
