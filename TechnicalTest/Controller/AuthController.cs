@@ -41,10 +41,10 @@ public class AuthController : ControllerBase
             var error = new ErrorDto
             {
                 message = $"Login failed. Status Code: {response.StatusCode}",
-                stackTrace = null,
+                stackTrace = "",
                 innerException = raw,
-                columnName = null,
-                columnValue = null
+                columnName = "",
+                columnValue = "",
             };
 
             return BadRequest(error);
