@@ -12,22 +12,7 @@ public class AppDbContext : DbContext
     public DbSet<WellDto> Wells => Set<WellDto>();
     public DbSet<PlatformDummyDto> PlatformDummy => Set<PlatformDummyDto>();
     public DbSet<WellDummyDto> WellDummy => Set<WellDummyDto>();
-
-    // protected override void OnModelCreating(ModelBuilder modelBuilder)
-    // {
-    //     modelBuilder.Entity<PlatformDto>()
-    //         .HasKey(x => x.id);
-
-
-    //     modelBuilder.Entity<WellDto>()
-    //         .HasKey(x => x.id);
-
-
-    //     modelBuilder.Entity<PlatformDto>()
-    //         .HasMany(x => x.Wells)
-    //         .WithOne()
-    //         .HasForeignKey(x => x.platformId);
-    // }
+    public DbSet<PlatformWellResultDto> PlatformWellResults => Set<PlatformWellResultDto>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -41,5 +26,20 @@ public class AppDbContext : DbContext
             .HasMany(x => x.Wells)
             .WithOne(x => x.Platform)
             .HasForeignKey(x => x.platformId);
-        }
+
+        modelBuilder.Entity<PlatformDto>()
+            .HasKey(x => x.id);
+
+        modelBuilder.Entity<WellDto>()
+            .HasKey(x => x.id);
+
+        modelBuilder.Entity<PlatformDto>()
+            .HasMany(x => x.Wells)
+            .WithOne(x => x.Platform)
+            .HasForeignKey(x => x.platformId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        modelBuilder.Entity<PlatformWellResultDto>()
+            .HasNoKey();
+    }
 }

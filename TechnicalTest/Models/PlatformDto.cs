@@ -1,8 +1,11 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace TechnicalTest.Models;
 
 // One PlatformDto → Many WellDto
 public class PlatformDto
 {
+    [Key]
     public int id { get; set; }
     public string uniqueName { get; set; } = "";
     public double latitude { get; set; }

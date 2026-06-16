@@ -1,9 +1,11 @@
 using System.Text.Json.Serialization;
+using System.ComponentModel.DataAnnotations;
 
 namespace TechnicalTest.Models;
 
 public class WellDto
 {
+    [Key]
     public int id { get; set; }
     public int platformId { get; set; }
     public string uniqueName { get; set; } = "";
@@ -13,5 +15,5 @@ public class WellDto
     public DateTime updatedAt { get; set; }
 
     [JsonIgnore]
-    public PlatformDto Platform { get; set; } = null!;
+    public PlatformDto? Platform { get; set; }
 }
