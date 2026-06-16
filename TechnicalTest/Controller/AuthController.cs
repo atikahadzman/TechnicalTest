@@ -22,6 +22,11 @@ public class AuthController : ControllerBase
         _apiSettings = options.Value;
     }
 
+    /**
+     * method : POST
+     * api endpoint : /api/Auth/login
+     * purpose : this is for login to get token  
+    */
     [HttpPost("login")]
     public async Task<IActionResult> Login([FromBody] LoginRequest request)
     {
