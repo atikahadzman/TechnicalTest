@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TechnicalTest.Data;
+using TechnicalTest.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +17,9 @@ builder.Services.AddHttpClient();
 // EF Core + SQL Server
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.Configure<ApiSettings>(
+builder.Configuration.GetSection("ApiSettings"));
 
 var app = builder.Build();
 
