@@ -1,8 +1,28 @@
-# Visual Studio
+# Visual Studio / VS Code
 .vs/
 *.user
 *.suo
+*.userosscache
+*.sln.docstates
 
-# Build output
+# Build outputs
 bin/
 obj/
+out/
+
+# .NET publish
+publish/
+
+# Logs
+*.log
+
+# NuGet packages
+*.nupkg
+*.snupkg
+
+# Rider / JetBrains
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
